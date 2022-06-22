@@ -24,10 +24,18 @@ const getCredentialsForClient = (credentials) => {
     database: credentials.database,
     port: credentials.port,
   }
-  if (credentials.sslrootcert) {
+  // Heroku deployments reguire the parameter ssl.rejectUnauthorized to be 'false'
+  // if (credentials.sslrootcert) {
+  //   config.ssl = {
+  //     rejectUnauthorized: false,
+  //     ca: credentials.sslrootcert,
+  //   }
+  // }
+
+  if (process.env.NODE_ENV === 'production') {
     config.ssl = {
       rejectUnauthorized: false,
-      ca: credentials.sslrootcert,
+      // ca: credentials.sslrootcert,
     }
   }
   return config
