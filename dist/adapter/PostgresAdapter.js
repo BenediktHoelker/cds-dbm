@@ -9,10 +9,11 @@ const fs_1 = __importDefault(require("fs"));
 const liquibase_1 = __importDefault(require("../liquibase"));
 const BaseAdapter_1 = require("./BaseAdapter");
 const ChangeLog_1 = require("../ChangeLog");
+require('dotenv').config();
 const getCredentialsForClient = (credentials) => {
     // Use connection if existing
     if (typeof process.env.DATABASE_URL !== 'undefined') {
-        return { connectionString: credentials.connectionString, database: '' };
+        return { connectionString: process.env.DATABASE_URL, database: '' };
     }
     if (typeof credentials.username !== 'undefined') {
         credentials.user = credentials.username;

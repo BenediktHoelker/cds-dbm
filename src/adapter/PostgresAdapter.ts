@@ -7,10 +7,12 @@ import { PostgresDatabase } from './../types/PostgresDatabase'
 import { ChangeLog } from '../ChangeLog'
 import { ViewDefinition } from '../types/AdapterTypes'
 
+require('dotenv').config()
+
 const getCredentialsForClient = (credentials) => {
   // Use connection if existing
   if (typeof process.env.DATABASE_URL !== 'undefined') {
-    return { connectionString: credentials.connectionString, database: '' }
+    return { connectionString: process.env.DATABASE_URL, database: '' }
   }
 
   if (typeof credentials.username !== 'undefined') {
