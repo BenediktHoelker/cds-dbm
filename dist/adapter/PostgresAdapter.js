@@ -11,7 +11,7 @@ const BaseAdapter_1 = require("./BaseAdapter");
 const ChangeLog_1 = require("../ChangeLog");
 const getCredentialsForClient = (credentials) => {
     // Use connection if existing
-    if (typeof credentials.connectionString !== 'undefined') {
+    if (typeof process.env.DATABASE_URL !== 'undefined') {
         return { connectionString: credentials.connectionString, database: '' };
     }
     if (typeof credentials.username !== 'undefined') {

@@ -9,7 +9,7 @@ import { ViewDefinition } from '../types/AdapterTypes'
 
 const getCredentialsForClient = (credentials) => {
   // Use connection if existing
-  if (typeof credentials.connectionString !== 'undefined') {
+  if (typeof process.env.DATABASE_URL !== 'undefined') {
     return { connectionString: credentials.connectionString, database: '' }
   }
 
