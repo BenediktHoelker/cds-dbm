@@ -8,6 +8,10 @@ import { ChangeLog } from '../ChangeLog'
 import { ViewDefinition } from '../types/AdapterTypes'
 
 const getCredentialsForClient = (credentials) => {
+  if (typeof credentials.connectionString !== 'undefined') {
+    return { connectionString: credentials.connectionString, database: '' }
+  }
+
   if (typeof credentials.username !== 'undefined') {
     credentials.user = credentials.username
   }
@@ -17,6 +21,7 @@ const getCredentialsForClient = (credentials) => {
   if (typeof credentials.dbname !== 'undefined') {
     credentials.database = credentials.dbname
   }
+
   const config: ClientConfig = {
     user: credentials.user,
     password: credentials.password,
@@ -38,6 +43,7 @@ const getCredentialsForClient = (credentials) => {
       // ca: credentials.sslrootcert,
     }
   }
+
   return config
 }
 
