@@ -10,6 +10,7 @@ const liquibase_1 = __importDefault(require("../liquibase"));
 const BaseAdapter_1 = require("./BaseAdapter");
 const ChangeLog_1 = require("../ChangeLog");
 const getCredentialsForClient = (credentials) => {
+    // Use connection if existing
     if (typeof credentials.connectionString !== 'undefined') {
         return { connectionString: credentials.connectionString, database: '' };
     }

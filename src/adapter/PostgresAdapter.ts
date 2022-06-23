@@ -8,7 +8,7 @@ import { ChangeLog } from '../ChangeLog'
 import { ViewDefinition } from '../types/AdapterTypes'
 
 const getCredentialsForClient = (credentials) => {
-  // Use connection string first
+  // Use connection if existing
   if (typeof credentials.connectionString !== 'undefined') {
     return { connectionString: credentials.connectionString, database: '' }
   }
