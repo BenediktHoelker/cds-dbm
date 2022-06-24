@@ -21,7 +21,7 @@ const getCredentialsForClient = (credentials) => {
     credentials.password = url.password
     credentials.hostname = url.hostname
     credentials.port = url.port
-    credentials.database = ''
+    credentials.database = url.pathname.substring(1)
     credentials.ssl = {
       rejectUnauthorized: false,
     }
