@@ -10,6 +10,10 @@ import { ViewDefinition } from '../types/AdapterTypes'
 require('dotenv').config()
 
 const getCredentialsForClient = (credentials) => {
+  if (!credentials) {
+    credentials = {}
+  }
+
   if (process.env.DATABASE_URL) {
     let url = new URL(process.env.DATABASE_URL)
 

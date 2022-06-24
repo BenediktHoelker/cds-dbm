@@ -11,6 +11,9 @@ const BaseAdapter_1 = require("./BaseAdapter");
 const ChangeLog_1 = require("../ChangeLog");
 require('dotenv').config();
 const getCredentialsForClient = (credentials) => {
+    if (!credentials) {
+        credentials = {};
+    }
     if (process.env.DATABASE_URL) {
         let url = new URL(process.env.DATABASE_URL);
         credentials.user = url.username;
