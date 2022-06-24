@@ -121,7 +121,7 @@ export class PostgresAdapter extends BaseAdapter {
     const credentials = this.options.service.credentials || {} // In case a DATABASE_URL is supplied directly (e.g. on Heroku)
 
     let url = process.env.DATABASE_URL
-      ? `jdbc:${process.env.DATABASE_URL}`
+      ? `"jdbc:${process.env.DATABASE_URL}"`
       : `jdbc:postgresql://${credentials.host || credentials.hostname}:${credentials.port}/${
           credentials.database || credentials.dbname
         }`
