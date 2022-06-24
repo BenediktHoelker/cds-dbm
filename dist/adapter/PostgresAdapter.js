@@ -112,7 +112,7 @@ class PostgresAdapter extends BaseAdapter_1.BaseAdapter {
         }
         const liquibaseOptions = {
             username: credentials.user || credentials.username,
-            password: this.options.service.credentials.password,
+            password: credentials.password,
             url: url,
             classpath: `${__dirname}/../../drivers/postgresql-42.3.2.jar`,
             driver: 'org.postgresql.Driver',
