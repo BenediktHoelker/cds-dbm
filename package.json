@@ -1,5 +1,5 @@
 {
-  "name": "@benedikt/cds-dbm",
+  "name": "cds-dbm",
   "version": "0.0.37",
   "description": "Database deployment and migrations for SAP CAP",
   "main": "index.js",
