@@ -11,6 +11,17 @@ const BaseAdapter_1 = require("./BaseAdapter");
 const ChangeLog_1 = require("../ChangeLog");
 require('dotenv').config();
 const getCredentialsForClient = (credentials) => {
+    if (process.env.DATABASE_URL) {
+        let url = new URL(process.env.DATABASE_URL);
+        credentials.user = url.username;
+        credentials.password = url.password;
+        credentials.hostname = url.hostname;
+        credentials.port = url.port;
+        credentials.database = '';
+        credentials.ssl = {
+            rejectUnauthorized: false,
+        };
+    }
     if (typeof credentials.username !== 'undefined') {
         credentials.user = credentials.username;
     }
@@ -20,26 +31,7 @@ const getCredentialsForClient = (credentials) => {
     if (typeof credentials.dbname !== 'undefined') {
         credentials.database = credentials.dbname;
     }
-    const config = {
-        user: credentials.user,
-        password: credentials.password,
-        host: credentials.host,
-        database: credentials.database,
-        port: credentials.port,
-    };
-    // Heroku deployments reguire the parameter ssl.rejectUnauthorized to be 'false'
-    // if (credentials.sslrootcert) {
-    //   config.ssl = {
-    //     rejectUnauthorized: false,
-    //     ca: credentials.sslrootcert,
-    //   }
-    // }
-    if (process.env.NODE_ENV === 'production') {
-        config.ssl = {
-            rejectUnauthorized: false,
-            // ca: credentials.sslrootcert,
-        };
-    }
+    const config = credentials;
     return config;
 };
 class PostgresAdapter extends BaseAdapter_1.BaseAdapter {

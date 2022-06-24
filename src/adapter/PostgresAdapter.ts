@@ -10,6 +10,19 @@ import { ViewDefinition } from '../types/AdapterTypes'
 require('dotenv').config()
 
 const getCredentialsForClient = (credentials) => {
+  if (process.env.DATABASE_URL) {
+    let url = new URL(process.env.DATABASE_URL)
+
+    credentials.user = url.username
+    credentials.password = url.password
+    credentials.hostname = url.hostname
+    credentials.port = url.port
+    credentials.database = ''
+    credentials.ssl = {
+      rejectUnauthorized: false,
+    }
+  }
+
   if (typeof credentials.username !== 'undefined') {
     credentials.user = credentials.username
   }
@@ -20,27 +33,7 @@ const getCredentialsForClient = (credentials) => {
     credentials.database = credentials.dbname
   }
 
-  const config: ClientConfig = {
-    user: credentials.user,
-    password: credentials.password,
-    host: credentials.host,
-    database: credentials.database,
-    port: credentials.port,
-  }
-  // Heroku deployments reguire the parameter ssl.rejectUnauthorized to be 'false'
-  // if (credentials.sslrootcert) {
-  //   config.ssl = {
-  //     rejectUnauthorized: false,
-  //     ca: credentials.sslrootcert,
-  //   }
-  // }
-
-  if (process.env.NODE_ENV === 'production') {
-    config.ssl = {
-      rejectUnauthorized: false,
-      // ca: credentials.sslrootcert,
-    }
-  }
+  const config: ClientConfig = credentials
 
   return config
 }
