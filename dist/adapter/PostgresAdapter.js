@@ -11,10 +11,6 @@ const BaseAdapter_1 = require("./BaseAdapter");
 const ChangeLog_1 = require("../ChangeLog");
 require('dotenv').config();
 const getCredentialsForClient = (credentials) => {
-    // Use connection if existing
-    if (typeof process.env.DATABASE_URL !== 'undefined') {
-        return { connectionString: process.env.DATABASE_URL, database: '' };
-    }
     if (typeof credentials.username !== 'undefined') {
         credentials.user = credentials.username;
     }
@@ -103,16 +99,14 @@ class PostgresAdapter extends BaseAdapter_1.BaseAdapter {
      * @param {string} cmd
      */
     liquibaseOptionsFor(cmd) {
-        const credentials = this.options.service.credentials || {}; // In case a DATABASE_URL is supplied directly (e.g. on Heroku)
-        let url = process.env.DATABASE_URL
-            ? `"jdbc:${process.env.DATABASE_URL}"`
-            : `jdbc:postgresql://${credentials.host || credentials.hostname}:${credentials.port}/${credentials.database || credentials.dbname}`;
+        const credentials = this.options.service.credentials;
+        var url = `jdbc:postgresql://${credentials.host || credentials.hostname}:${credentials.port}/${credentials.database || credentials.dbname}`;
         if (credentials.sslrootcert) {
             url += '?ssl=true';
         }
         const liquibaseOptions = {
             username: credentials.user || credentials.username,
-            password: credentials.password,
+            password: this.options.service.credentials.password,
             url: url,
             classpath: `${__dirname}/../../drivers/postgresql-42.3.2.jar`,
             driver: 'org.postgresql.Driver',
