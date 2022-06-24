@@ -10,20 +10,18 @@ import { ViewDefinition } from '../types/AdapterTypes'
 require('dotenv').config()
 
 const getCredentialsForClient = (credentials) => {
-  if (!credentials) {
-    credentials = {}
-  }
-
   if (process.env.DATABASE_URL) {
     let url = new URL(process.env.DATABASE_URL)
 
-    credentials.user = url.username
-    credentials.password = url.password
-    credentials.hostname = url.hostname
-    credentials.port = url.port
-    credentials.database = url.pathname.substring(1)
-    credentials.ssl = {
-      rejectUnauthorized: false,
+    credentials = {
+      user: url.username,
+      password: url.password,
+      hostname: url.hostname,
+      port: url.port,
+      database: url.pathname.substring(1),
+      ssl: {
+        rejectUnauthorized: false,
+      },
     }
   }
 
@@ -110,17 +108,16 @@ export class PostgresAdapter extends BaseAdapter {
    * @param {string} cmd
    */
   liquibaseOptionsFor(cmd: string): liquibaseOptions {
-    const credentials = this.options.service.credentials
-    var url = `jdbc:postgresql://${credentials.host || credentials.hostname}:${credentials.port}/${
-      credentials.database || credentials.dbname
-    }`
-    if (credentials.sslrootcert) {
-      url += '?ssl=true'
-    }
+    const credentials = getCredentialsForClient(this.options.service.credentials)
+    var url = `jdbc:postgresql://${credentials.host}:${credentials.port}/${credentials.database}`
+
+    // if (credentials.sslrootcert) {
+    //   url += '?ssl=true'
+    // }
 
     const liquibaseOptions: liquibaseOptions = {
-      username: credentials.user || credentials.username,
-      password: this.options.service.credentials.password,
+      username: credentials.user,
+      password: credentials.password.toString(),
       url: url,
       classpath: `${__dirname}/../../drivers/postgresql-42.3.2.jar`,
       driver: 'org.postgresql.Driver',
