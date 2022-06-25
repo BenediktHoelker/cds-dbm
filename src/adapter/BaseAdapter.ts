@@ -9,6 +9,8 @@ import { sortByCasadingViews } from '../util'
 import { DataLoader } from '../DataLoader'
 import { ViewDefinition } from '../types/AdapterTypes'
 
+require('dotenv').config()
+
 /**
  * Base class that contains all the shared stuff.
  */

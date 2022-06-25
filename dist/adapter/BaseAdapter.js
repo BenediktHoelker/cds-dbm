@@ -10,6 +10,7 @@ const path_1 = __importDefault(require("path"));
 const ChangeLog_1 = require("../ChangeLog");
 const util_1 = require("../util");
 const DataLoader_1 = require("../DataLoader");
+require('dotenv').config();
 /**
  * Base class that contains all the shared stuff.
  */
