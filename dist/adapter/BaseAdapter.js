@@ -33,7 +33,7 @@ class BaseAdapter {
                 port: parseInt(url.port),
                 database: url.pathname.substring(1),
             };
-            options.service.credentials = credentials;
+            options.service.credentials = { ...options.service.credentials, ...credentials };
         }
         this.serviceKey = serviceKey;
         this.options = options;
