@@ -11,19 +11,6 @@ const BaseAdapter_1 = require("./BaseAdapter");
 const ChangeLog_1 = require("../ChangeLog");
 require('dotenv').config();
 const getCredentialsForClient = (credentials) => {
-    if (process.env.DATABASE_URL) {
-        let url = new URL(process.env.DATABASE_URL);
-        credentials = {
-            user: url.username,
-            password: url.password,
-            hostname: url.hostname,
-            port: url.port,
-            database: url.pathname.substring(1),
-            ssl: {
-                rejectUnauthorized: false,
-            },
-        };
-    }
     if (typeof credentials.username !== 'undefined') {
         credentials.user = credentials.username;
     }

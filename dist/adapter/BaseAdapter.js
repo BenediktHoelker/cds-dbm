@@ -21,6 +21,20 @@ class BaseAdapter {
      * @param options
      */
     constructor(serviceKey, options) {
+        // Heroku provides rotating credentials via process.env.DATABASE_URL
+        // JDBC (used by Liquibase) cannot work with basic authentication urls
+        // => Extract the credentials from the URL so that JDBC can use them 
+        if (process.env.DATABASE_URL) {
+            const url = new URL(process.env.DATABASE_URL);
+            const dbConfig = {
+                user: url.username,
+                password: url.password,
+                hostname: url.hostname,
+                port: url.port,
+                database: url.pathname.substring(1),
+            };
+            options = { ...options, ...dbConfig };
+        }
         this.serviceKey = serviceKey;
         this.options = options;
         this.logger = global.console;
