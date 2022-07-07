@@ -17,11 +17,9 @@ import { BaseAdapter } from '../src/adapter/BaseAdapter'
 describe('PostgresAdapter', () => {
   beforeEach(() => {
     if (cds.services['db']) {
-
       // @ts-ignore
       cds.services['db'].disconnect()
     }
-
   })
 
   const options: configOptions = {
@@ -59,7 +57,7 @@ describe('PostgresAdapter', () => {
       cds.env.requires.db = Object.assign({ kind: 'postgres' }, options.service)
       // @ts-ignore
       cds.env.requires.postgres = options.service
-      console.log(cds.env.requires);
+      console.log(cds.env.requires)
       adapter = await adapterFactory('db', options)
     })
     it('+ dropAll: false + should remove all cds based tables and views from the database', async () => {

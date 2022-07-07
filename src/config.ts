@@ -64,10 +64,10 @@ const config = async (service: string): Promise<configOptions> => {
   await cds.connect()
 
   const serviceOptions = cds.env.requires[service]
-  
+
   // @ts-ignore
   const migrationOptions = cds.env.migrations[service]
-  
+
   return {
     migrations: migrationOptions,
     service: serviceOptions,

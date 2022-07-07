@@ -1,6 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const PostgresAdapter_1 = require("./PostgresAdapter");
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const PostgresAdapter_1 = require('./PostgresAdapter')
 /**
  * Adapter factory returns an instance of the deployment/migration handler.
  *
@@ -8,13 +8,13 @@ const PostgresAdapter_1 = require("./PostgresAdapter");
  * @param {configOptions} options
  */
 const getAdapter = async (service, options) => {
-    await cds.connect();
-    switch (cds.services[service].constructor.name) {
-        case 'PostgresDatabase':
-            return new PostgresAdapter_1.PostgresAdapter(service, options);
-        default:
-            throw 'Unsupported database. Currently only PostgreSQL (cds-pg) is supported.';
-    }
-};
-exports.default = getAdapter;
+  await cds.connect()
+  switch (cds.services[service].constructor.name) {
+    case 'PostgresDatabase':
+      return new PostgresAdapter_1.PostgresAdapter(service, options)
+    default:
+      throw 'Unsupported database. Currently only PostgreSQL (cds-pg) is supported.'
+  }
+}
+exports.default = getAdapter
 //# sourceMappingURL=index.js.map

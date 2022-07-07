@@ -6,26 +6,23 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.35](https://github.com/mikezaschka/cds-dbm/compare/v0.0.34...v0.0.35) (2022-03-22)
 
-
 ### Bug Fixes
 
-* delta update column matching fully lowercase ([4e6be32](https://github.com/mikezaschka/cds-dbm/commit/4e6be32f3cd2f05d9ed28ce52ce3ba54b63420bc))
+- delta update column matching fully lowercase ([4e6be32](https://github.com/mikezaschka/cds-dbm/commit/4e6be32f3cd2f05d9ed28ce52ce3ba54b63420bc))
 
 ### [0.0.34](https://github.com/mikezaschka/cds-dbm/compare/v0.0.33...v0.0.34) (2022-03-22)
 
 ### [0.0.33](https://github.com/mikezaschka/cds-dbm/compare/v0.0.32...v0.0.33) (2022-03-22)
 
-
 ### Bug Fixes
 
-* delta update condition now respects single records ([cf180fb](https://github.com/mikezaschka/cds-dbm/commit/cf180fb7252c37d4f2f0b62d9ec6588f47ef93cc))
+- delta update condition now respects single records ([cf180fb](https://github.com/mikezaschka/cds-dbm/commit/cf180fb7252c37d4f2f0b62d9ec6588f47ef93cc))
 
 ### [0.0.32](https://github.com/mikezaschka/cds-dbm/compare/v0.0.31...v0.0.32) (2022-03-22)
 
-
 ### Bug Fixes
 
-* handle column names in csv file more save ([ae2dbd4](https://github.com/mikezaschka/cds-dbm/commit/ae2dbd430e26a8837aa55c307aef301298a53dce))
+- handle column names in csv file more save ([ae2dbd4](https://github.com/mikezaschka/cds-dbm/commit/ae2dbd430e26a8837aa55c307aef301298a53dce))
 
 ### [0.0.31](https://github.com/mikezaschka/cds-dbm/compare/v0.0.30...v0.0.31) (2022-03-15)
 
@@ -33,30 +30,26 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.29](https://github.com/mikezaschka/cds-dbm/compare/v0.0.28...v0.0.29) (2022-03-15)
 
-
 ### Bug Fixes
 
-* upgrade jar files to fix vulnerability ([7a57d2a](https://github.com/mikezaschka/cds-dbm/commit/7a57d2a5d62716446dab9b29de8a7ed41963b889))
+- upgrade jar files to fix vulnerability ([7a57d2a](https://github.com/mikezaschka/cds-dbm/commit/7a57d2a5d62716446dab9b29de8a7ed41963b889))
 
 ### [0.0.28](https://github.com/mikezaschka/cds-dbm/compare/v0.0.27...v0.0.28) (2022-01-12)
 
-
 ### Features
 
-* remove obsolete build command ([f0a9c92](https://github.com/mikezaschka/cds-dbm/commit/f0a9c92cec12a580c83601a59667033973fd5576))
-* updated @sap/cds to latest ([a3b7f23](https://github.com/mikezaschka/cds-dbm/commit/a3b7f231bbe12935cf301f247670dfb43e0d9ca0))
-
+- remove obsolete build command ([f0a9c92](https://github.com/mikezaschka/cds-dbm/commit/f0a9c92cec12a580c83601a59667033973fd5576))
+- updated @sap/cds to latest ([a3b7f23](https://github.com/mikezaschka/cds-dbm/commit/a3b7f231bbe12935cf301f247670dfb43e0d9ca0))
 
 ### Bug Fixes
 
-* remove obsolete cds imports ([a760497](https://github.com/mikezaschka/cds-dbm/commit/a7604974305f0f188f7208a4f3ad10914d097a0a))
+- remove obsolete cds imports ([a760497](https://github.com/mikezaschka/cds-dbm/commit/a7604974305f0f188f7208a4f3ad10914d097a0a))
 
 ### [0.0.27](https://github.com/mikezaschka/cds-dbm/compare/v0.0.26...v0.0.27) (2021-06-24)
 
-
 ### Bug Fixes
 
-* handle more complex cascading views correctly ([7bee324](https://github.com/mikezaschka/cds-dbm/commit/7bee324191ad3f073042171f6d44966551a4c962))
+- handle more complex cascading views correctly ([7bee324](https://github.com/mikezaschka/cds-dbm/commit/7bee324191ad3f073042171f6d44966551a4c962))
 
 ### [0.0.26](https://github.com/mikezaschka/cds-dbm/compare/v0.0.25...v0.0.26) (2021-05-29)
 
